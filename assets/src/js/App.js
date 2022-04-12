@@ -1,31 +1,37 @@
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { StrictMode, useState } from 'react';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import SearchParams from './SearchParams';
 import Details from './Details';
+import ThemeContext from './ThemeContext';
 
 const App = () => {
-	return (
-		<div>
-			<Router>
-				<header>
-					<Link to="/">
-						<h1>Adopt Me!</h1>
-					</Link>
-				</header>
+	const theme = useState('darkblue');
 
-				<Routes>
-					<Route path="/details/:id" element={<Details />} />
-					<Route path="/" element={<SearchParams />} />
-				</Routes>
-			</Router>
-		</div>
+	return (
+		<ThemeContext.Provider value={theme}>
+			<div>
+				<Router>
+					<header>
+						<Link to="/">
+							<h1>Adopt Me!</h1>
+						</Link>
+					</header>
+
+					<Routes>
+						<Route path="/details/:id" element={<Details />} />
+						<Route path="/" element={<SearchParams />} />
+					</Routes>
+				</Router>
+			</div>
+		</ThemeContext.Provider>
 	);
 };
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
 	<StrictMode>
 		<App />
-	</StrictMode>,
-	document.getElementById('root')
+	</StrictMode>
 );
