@@ -8,20 +8,31 @@ const SearchParams = () => {
 	const animals = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 	const themes = ['darkblue', 'peru', 'chartreuse', 'pink', 'mediumorchid'];
 
-	const [location, setLocation] = useState('');
-	const [animal, setAnimal] = useState('');
-	const [breed, setBreed] = useState('');
-	const [pets, setPets] = useState([]);
-	const [breeds] = useBreedList(animal);
-	const [theme, setTheme] = useContext(ThemeContext);
+	// state variables
+	let [location, setLocation] = useState('');
+	let [animal, setAnimal] = useState('');
+	let [breed, setBreed] = useState('');
+	let [pets, setPets] = useState([]);
+	let [breeds] = useBreedList(animal);
+	let [theme, setTheme] = useContext(ThemeContext);
+
+	// breed value needs to be reset because sometimes it keeps breeds from other animals
+	const resetBreed = () => {
+		breed = '';
+	};
 
 	useEffect(() => {
 		requestPets();
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	async function requestPets() {
+		// check if select options has default text
+		const animalParam = animal && animal != 'Please Select' ? animal : '';
+		const breedParam = breed && breed != 'Please Select' ? breed : '';
+
+		// get response
 		const response = await fetch(
-			`http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+			`http://pets-v2.dev-apis.com/pets?animal=${animalParam}&location=${location}&breed=${breedParam}`
 		);
 		const json = await response.json();
 		setPets(json.pets);
@@ -50,8 +61,14 @@ const SearchParams = () => {
 					<select
 						id="animal"
 						value={animal}
-						onChange={(e) => setAnimal(e.target.value)}
-						onBlur={(e) => setAnimal(e.target.value)}
+						onChange={(e) => {
+							setAnimal(e.target.value);
+							resetBreed();
+						}}
+						onBlur={(e) => {
+							setAnimal(e.target.value);
+							resetBreed();
+						}}
 					>
 						<option>Please Select</option>
 						{animals.map((animal) => (
