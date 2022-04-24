@@ -34,7 +34,7 @@ const webpCommonConfig = {
 	module: {
 		rules: [
 			{
-				test: /\.m?js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /(node_modules|bower_components)/,
 				use: {
 					loader: 'babel-loader',
@@ -69,6 +69,9 @@ const webpCommonConfig = {
 				},
 			},
 		],
+	},
+	resolve: {
+		extensions: ['.js', '.jsx'],
 	},
 };
 
