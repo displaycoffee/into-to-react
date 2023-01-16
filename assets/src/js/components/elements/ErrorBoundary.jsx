@@ -1,8 +1,8 @@
-// mostly took this from the react docs
-import { Component } from 'react';
+/* react imports */
 import { Link, Navigate } from 'react-router-dom';
+import { Component } from 'react';
 
-class ErrorBoundary extends Component {
+export class ErrorBoundary extends Component {
 	state = { hasError: false, redirect: false };
 
 	static getDerivedStateFromError() {
@@ -31,5 +31,3 @@ class ErrorBoundary extends Component {
 		return this.props.children;
 	}
 }
-
-export default ErrorBoundary;

@@ -1,6 +1,7 @@
+/* react imports */
 import { Link } from 'react-router-dom';
 
-const Pet = ({ name, animal, breed, images, location, id }) => {
+export const Pet = ({ name, animal, breed, images, location, id }) => {
 	// check if image is defined
 	let hero = 'http://pets-images.dev-apis.com/pets/none.jpg';
 	if (images.length > 0) {
@@ -20,5 +21,3 @@ const Pet = ({ name, animal, breed, images, location, id }) => {
 		</Link>
 	);
 };
-
-export default Pet;

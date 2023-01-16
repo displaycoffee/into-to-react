@@ -1,6 +1,7 @@
+/* react imports */
 import { Component } from 'react';
 
-class Carousel extends Component {
+export class Carousel extends Component {
 	state = { active: 0 };
 
 	static defaultProps = {
@@ -37,5 +38,3 @@ class Carousel extends Component {
 		);
 	}
 }
-
-export default Carousel;

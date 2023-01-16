@@ -1,9 +1,14 @@
+/* react imports */
 import { useState, useEffect, useContext } from 'react';
-import ThemeContext from './ThemeContext';
-import useBreedList from './useBreedList';
-import Results from './Results';
 
-const SearchParams = () => {
+/* local script imports */
+import useBreedList from '../../scripts/useBreedList';
+
+/* local component imports */
+import { ThemeContext } from './ThemeContext';
+import { Results } from './Results';
+
+export const SearchParams = () => {
 	// option arrays
 	const animals = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 	const themes = ['darkblue', 'peru', 'chartreuse', 'pink', 'mediumorchid'];
@@ -122,5 +127,3 @@ const SearchParams = () => {
 		</div>
 	);
 };
-
-export default SearchParams;

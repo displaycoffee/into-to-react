@@ -1,11 +1,16 @@
+/* react imports */
 import { Component } from 'react';
-import withRouter from './withRouter';
-import Carousel from './Carousel';
-import ErrorBoundary from './ErrorBoundary';
-import ThemeContext from './ThemeContext';
-import Modal from './Modal';
 
-class Details extends Component {
+/* local script imports */
+import withRouter from '../../scripts/withRouter';
+
+/* local component imports */
+import { ThemeContext } from '../elements/ThemeContext';
+import { Carousel } from '../elements/Carousel';
+import { ErrorBoundary } from '../elements/ErrorBoundary';
+import { Modal } from '../elements/Modal';
+
+export class Details extends Component {
 	state = { loading: true, showModal: false };
 
 	async componentDidMount() {

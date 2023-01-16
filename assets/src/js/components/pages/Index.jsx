@@ -1,11 +1,13 @@
-import { StrictMode, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+/* react imports */
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import SearchParams from './SearchParams';
-import Details from './Details';
-import ThemeContext from './ThemeContext';
 
-const App = () => {
+/* local component imports */
+import { SearchParams } from '../elements/SearchParams';
+import { Details } from './Details';
+import { ThemeContext } from '../elements/ThemeContext';
+
+export const Index = () => {
 	const theme = useState('darkblue');
 
 	return (
@@ -27,11 +29,3 @@ const App = () => {
 		</ThemeContext.Provider>
 	);
 };
-
-const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(
-	<StrictMode>
-		<App />
-	</StrictMode>
-);

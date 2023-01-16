@@ -1,6 +1,7 @@
-import Pet from './Pet';
+/* local component imports */
+import { Pet } from './Pet';
 
-const Results = ({ pets }) => {
+export const Results = ({ pets }) => {
 	return (
 		<div className="search">
 			{pets.length === 0 ? (
@@ -21,5 +22,3 @@ const Results = ({ pets }) => {
 		</div>
 	);
 };
-
-export default Results;
