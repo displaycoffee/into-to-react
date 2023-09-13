@@ -12,9 +12,15 @@ export const theme = {
 
 // ensure an empty or undefined sass value is false
 function checkSassVar(value) {
-	if (value && value != 'false') {
-		let formattedValue = isNaN(parseInt(value)) ? value.replace(/\"/gi, '') : parseInt(value);
-		return formattedValue;
+	if (value) {
+		if (value == 'true') {
+			return true;
+		} else if (value == 'false') {
+			return false;
+		} else {
+			let formattedValue = isNaN(value * 1) ? value.replace(/\"/gi, "'") : value * 1;
+			return formattedValue;
+		}
 	} else {
 		return false;
 	}

@@ -1,4 +1,4 @@
-/* local component imports */
+/* Local components */
 import { Pet } from '../elements/Pet';
 
 export const Index = () => {
