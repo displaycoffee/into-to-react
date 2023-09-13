@@ -1,17 +1,13 @@
-/* react imports */
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-
-/* local script imports */
-// none
-
 /* local component imports */
-// none
+import { Pet } from '../elements/Pet';
 
 export const Index = () => {
 	return (
-		<div className="wrapper">
-			oh hi.
+		<div>
+			<h1>Adopt Me!</h1>
+			<Pet name={'Luna'} animal={'Dog'} breed={'Havenese'} />
+			<Pet name={'Pepper'} animal={'Bird'} breed={'Cockatiel'} />
+			<Pet name={'Doink'} animal={'Cat'} breed={'Mixed'} />
 		</div>
 	);
 };
