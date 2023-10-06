@@ -10,7 +10,7 @@ export const Portal = ({ children }) => {
 	const elementRef = useRef(null);
 	if (!elementRef.current) {
 		elementRef.current = document.createElement('div');
-		elementRef.current.setAttribute('class', 'wrapper');
+		elementRef.current.setAttribute('class', 'portal-fixed flex-nowrap flex-align-items-center flex-justify-content-center');
 	}
 
 	// Add element reference to portal then clean up

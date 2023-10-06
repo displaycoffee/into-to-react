@@ -9,10 +9,11 @@ import './styles/details.scss';
 /* Local components */
 import { Context } from '../../entry/context/Context';
 import { Portal } from '../../entry/portal/Portal';
+import { Loader } from '../../shared/loader/Loader';
 import { Carousel } from '../../shared/carousel/Carousel';
 
 export const Details = () => {
-	const [showModal, setShowModal] = useState(false);
+	const [showPortal, setShowPortal] = useState(false);
 	const navigate = useNavigate();
 	const context = useContext(Context);
 	const [adoptedPet, setAdoptedPet] = context.adoptedPet;
@@ -23,19 +24,16 @@ export const Details = () => {
 
 	// Add loading pane until loading
 	if (results.isLoading) {
-		return (
-			<div className="loading-pane">
-				<div className="loader">🍥</div>
-			</div>
-		);
+		return <Loader />;
 	}
 
+	// Grab pet data
 	const pet = results.data.pets[0];
 
 	return (
 		<div className="details styled-bg">
 			<div className="details-images">
-				<Carousel images={pet.images} />
+				<Carousel images={pet.images} alt={pet.name} />
 			</div>
 
 			<div className="details-info">
@@ -47,11 +45,11 @@ export const Details = () => {
 
 				<p>{pet.description}</p>
 
-				<button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
+				<button onClick={() => setShowPortal(true)}>Adopt {pet.name}</button>
 
-				{showModal ? (
+				{showPortal ? (
 					<Portal>
-						<div>
+						<div className="portal-adopt">
 							<h3>Would you like to adopt {pet.name}?</h3>
 
 							<div className="buttons">
@@ -63,7 +61,7 @@ export const Details = () => {
 								>
 									Yes
 								</button>
-								<button onClick={() => setShowModal(false)}>No</button>
+								<button onClick={() => setShowPortal(false)}>No</button>
 							</div>
 						</div>
 					</Portal>

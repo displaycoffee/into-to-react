@@ -8,7 +8,7 @@ import './styles/carousel.scss';
 import { Context } from '../../entry/context/Context';
 
 export const Carousel = (props) => {
-	const { images } = props;
+	const { images, alt } = props;
 	const context = useContext(Context);
 	let [activeImage, setActiveImage] = useState(images && images[0] ? images[0] : context.variables.images.default);
 
@@ -22,14 +22,14 @@ export const Carousel = (props) => {
 	return (
 		<div className="carousel flex-wrap flex-align-items-center">
 			<div className="carousel-image">
-				<img src={activeImage} alt="animal hero" title="animal hero" />
+				<img src={activeImage} alt={alt ? alt : 'hero'} title={alt ? alt : 'hero'} />
 			</div>
 
 			<div className="carousel-thumbnails flex-wrap flex-align-items-center flex-justify-content-center">
 				{images.map((image, index) => (
 					<div className={`carousel-thumbnail${activeImage === image ? ' active' : ''}`} key={image}>
 						<a className="pointer" onClick={(e) => handleClick(e, index)}>
-							<img src={image} alt="animal thumbnail" title="animal thumbnail" />
+							<img src={image} alt={alt ? alt : 'thumbnail'} title={alt ? alt : 'thumbnail'} />
 						</a>
 					</div>
 				))}

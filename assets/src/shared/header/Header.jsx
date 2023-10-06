@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 /* Local styles */
 import './styles/header.scss';
 
-export const Header = (props) => {
+export const Header = () => {
 	return (
 		<header>
 			<h1>

@@ -2,7 +2,7 @@
 @use "sass:map";
 
 // Animate
-// Example for $value: ss-spin 2s infinite linear
+// Example for $value: spin 2s infinite linear
 @mixin animate($value) {
 	-webkit-animation: $value;
 	-moz-animation: $value;
@@ -12,7 +12,7 @@
 // Animate - spin
 // Example: use when animating icons with the animate mixin
 @mixin animate-spin {
-	@keyframes ss-spin {
+	@keyframes spin {
 		0% {
 			@include transform(rotate(0deg));
 		}
