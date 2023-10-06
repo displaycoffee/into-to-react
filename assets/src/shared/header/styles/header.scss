@@ -12,18 +12,10 @@
 		text-align: center;
 		h1 {
 			display: inline-block;
-			font-size: functions.em(16px, 'rem');
 			line-height: 0;
 			a {
 				display: block;
-				background-image: url('//static.frontendmasters.com/resources/2019-05-02-complete-intro-react-v5/image-logo.png');
-				background-repeat: no-repeat;
-				background-position: center center;
-				background-size: contain;
 				filter: brightness(150%);
-				@include mixins.sizing(280px, 76px);
-				overflow: hidden;
-				text-indent: -9999px;
 			}
 		}
 	}

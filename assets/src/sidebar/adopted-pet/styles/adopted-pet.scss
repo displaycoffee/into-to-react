@@ -11,13 +11,9 @@
 	.adopted-pet {
 		margin: 0 0 theme.$spacing-x4 0;
 		.adopted-pet-image {
-			height: 250px;
 			margin: 0 0 theme.$spacing-x2 0;
-			img {
-				@include mixins.object-fit(center, cover);
-				@include mixins.sizing(100%, 100%);
-				@include mixins.border-radius(6px);	
-			}
+			@include mixins.border-radius(6px);
+			overflow: hidden;
 		}
 		.adopted-pet-name {
 			text-align: center;

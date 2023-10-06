@@ -9,10 +9,6 @@
 	// Style block
 
 	.carousel {
-		img {
-			@include mixins.object-fit(center, cover);
-			@include mixins.sizing(100%, 100%);
-		}
 		&, .carousel-image {
 			margin: 0 0 theme.$spacing-x4 0;
 		}
@@ -21,9 +17,11 @@
 			@include mixins.flex(1 1 100%);
 		}
 		.carousel-image {
-			height: 400px;
-			img {
-				@include mixins.border-radius(6px);	
+			.image-wrapper {
+				padding-bottom: 75%;
+				img {
+					@include mixins.border-radius(6px);	
+				}
 			}
 		}
 		.carousel-thumbnails {
@@ -36,15 +34,9 @@
 				}
 				a {
 					display: block;
-					position: relative;
-					@include mixins.sizing(100%, 0);
-					padding-bottom: calc(100% - 4px);
 					overflow: hidden;					
 					@include mixins.border-radius(50%);
 					border: 2px solid theme.$color-04;
-					img {
-						@include mixins.position-fill;
-					}
 				}
 			}
 		}
@@ -53,11 +45,15 @@
 		.carousel {
 			.carousel-image {
 				@include mixins.flex(0 1 auto);
-				@include mixins.sizing(45%, 300px);
+				width: 300px;
 				margin: 0 theme.$spacing-x4 0 0;
+				.image-wrapper {
+					padding-bottom: 100%;
+				}
 			}
 			.carousel-thumbnails {
 				@include mixins.flex;
+				@include mixins.flex-parent(justify-content, flex-start);
 				.carousel-thumbnail {
 					width: calc(100% / 5);
 				}

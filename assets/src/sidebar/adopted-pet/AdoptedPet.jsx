@@ -14,15 +14,18 @@ export const AdoptedPet = () => {
 	return adoptedPet ? (
 		<div className="adopted-pet styled-bg">
 			<div className="adopted-pet-image">
-				<img
-					src={adoptedPet?.images[0] ? adoptedPet.images[0] : context.variables.images.default}
-					alt={adoptedPet.name}
-					title={adoptedPet.name}
-				/>
+				<div className="image-wrapper">
+					<img
+						src={adoptedPet?.images[0] ? adoptedPet.images[0] : context.variables.images.default}
+						alt={adoptedPet.name}
+						title={adoptedPet.name}
+						loading="lazy"
+					/>
+				</div>
 			</div>
 
 			<div className="adopted-pet-name">
-				<strong>Your future pet:</strong> {adoptedPet.name}
+				<strong>Your future friend:</strong> {adoptedPet.name}
 			</div>
 		</div>
 	) : null;

@@ -2,7 +2,7 @@
 export const variables = {
 	paths: {
 		base: window.location.pathname.includes('/base') ? '/base' : '',
-		api: 'http://pets-v2.dev-apis.com/',
+		api: 'http://pets-v2.dev-apis.com',
 	},
 	images: {
 		default: 'http://pets-images.dev-apis.com/pets/none.jpg',

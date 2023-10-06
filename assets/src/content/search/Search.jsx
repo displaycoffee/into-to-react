@@ -33,13 +33,15 @@ export const Search = (props) => {
 						<Link to={`/details/${pet.id}`} className="pet styled-bg" key={pet.id}>
 							<div className="pet-details flex-nowrap flex-align-items-center">
 								<div className="pet-image column">
-									<img src={hero} alt={pet.name} title={pet.name} />
+									<div className="image-wrapper">
+										<img src={hero} alt={pet.name} title={pet.name} loading="lazy" />
+									</div>
 								</div>
 
 								<div className="pet-info column">
 									<h5>{pet.name}</h5>
 									<p>
-										{pet.animal} - {pet.breed} - {`${pet.city}, ${pet.state}`}
+										<span className="capitalize">{pet.animal}</span> - {pet.breed} - {`${pet.city}, ${pet.state}`}
 									</p>
 								</div>
 							</div>

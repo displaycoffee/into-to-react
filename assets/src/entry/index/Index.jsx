@@ -68,7 +68,7 @@ export const IndexWrapper = () => {
 							</aside>
 
 							<section className="main-content">
-								<NavigationRoutes navigationProps={{ requestParams: requestParams }} />
+								<NavigationRoutes requestParams={requestParams} />
 							</section>
 						</div>
 					</main>
@@ -92,8 +92,8 @@ const IndexBody = () => {
 		// Remove any previous body class
 		bodySelector.classList.remove(`${bodyPrefix}${indexCache.previous || 'index'}`);
 
-		// Update previous location path
-		indexCache.previous = location.pathname.replace(/\//g, '');
+		// Replace any body prefix, remove first slash, and replace any other slash with hyphen
+		indexCache.previous = location.pathname.replace(bodyPrefix, '').replace('/', '').replace(/\//g, '-');
 
 		// Add new body class
 		bodySelector.classList.add(`${bodyPrefix}${indexCache.previous || 'index'}`);

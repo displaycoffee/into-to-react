@@ -40,12 +40,14 @@ export const Details = () => {
 				<h3>{pet.name}</h3>
 
 				<p>
-					{pet.animal} - {pet.breed} - {pet.city}, {pet.state}
+					<span className="capitalize">{pet.animal}</span> - {pet.breed} - {pet.city}, {pet.state}
 				</p>
 
 				<p>{pet.description}</p>
 
-				<button onClick={() => setShowPortal(true)}>Adopt {pet.name}</button>
+				<button type="button" onClick={() => setShowPortal(true)}>
+					Adopt {pet.name}
+				</button>
 
 				{showPortal ? (
 					<Portal>
@@ -54,6 +56,7 @@ export const Details = () => {
 
 							<div className="buttons">
 								<button
+									type="button"
 									onClick={() => {
 										setAdoptedPet(pet);
 										navigate('/');
@@ -61,7 +64,9 @@ export const Details = () => {
 								>
 									Yes
 								</button>
-								<button onClick={() => setShowPortal(false)}>No</button>
+								<button type="button" onClick={() => setShowPortal(false)}>
+									No
+								</button>
 							</div>
 						</div>
 					</Portal>

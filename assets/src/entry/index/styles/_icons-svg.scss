@@ -13,14 +13,11 @@
 
 	// Style block
 
-	#svg-map {
-		@include mixins.sr-only;
-	}
 	.icon-wrapper {
 		@include mixins.flex-layout((display: inline-flex, flex-flow: column nowrap));
 		@include mixins.flex(0 0 auto);
 		@include mixins.icon-sizing(theme.$icon-size);
-		svg {
+		.icon {
 			display: block;
 			margin: auto;
 			@include mixins.sizing(auto, auto);
@@ -36,6 +33,9 @@
 	.icon-wrapper-large {
 		@include mixins.icon-sizing(theme.$icon-size + 2);
 	}
-	.icon-wrapper-xlarge {
+	.icon-wrapper-x-large {
 		@include mixins.icon-sizing(theme.$icon-size + 4);
+	}
+	.icon-wrapper-xx-large {
+		@include mixins.icon-sizing(theme.$icon-size + 8);
 	}

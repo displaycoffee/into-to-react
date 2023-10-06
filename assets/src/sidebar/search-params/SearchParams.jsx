@@ -1,5 +1,6 @@
 /* React */
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /* Local styles */
 import './styles/search-params.scss';
@@ -9,6 +10,7 @@ import { Context } from '../../entry/context/Context';
 
 export const SearchParams = (props) => {
 	const context = useContext(Context);
+	const navigate = useNavigate();
 	const { setRequestParams, animal, setAnimal, breeds } = props;
 
 	return (
@@ -24,6 +26,7 @@ export const SearchParams = (props) => {
 						location: formData.get('location') ?? '',
 					};
 					setRequestParams(obj);
+					navigate('/');
 				}}
 			>
 				<label className="flex-label flex-nowrap flex-align-items-center" htmlFor="location">
@@ -35,12 +38,13 @@ export const SearchParams = (props) => {
 					<span>Animal:</span>
 					<select
 						id="animal"
+						name="animal"
 						value={animal}
 						onChange={(e) => {
 							setAnimal(e.target.value);
 						}}
 					>
-						<option>Select animal</option>
+						<option value="">Select animal</option>
 						{context.variables.animals.map((animal) => (
 							<option value={animal.value} key={animal.value}>
 								{animal.label}
@@ -52,7 +56,7 @@ export const SearchParams = (props) => {
 				<label className="flex-label flex-nowrap flex-align-items-center" htmlFor="breed">
 					<span>Breed:</span>
 					<select id="breed" disabled={breeds.length === 0} name="breed">
-						<option>Select breed</option>
+						<option value="">Select breed</option>
 						{breeds.map((breed) => (
 							<option key={breed}>{breed}</option>
 						))}

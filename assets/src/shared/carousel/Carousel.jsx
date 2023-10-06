@@ -22,14 +22,18 @@ export const Carousel = (props) => {
 	return (
 		<div className="carousel flex-wrap flex-align-items-center">
 			<div className="carousel-image">
-				<img src={activeImage} alt={alt ? alt : 'hero'} title={alt ? alt : 'hero'} />
+				<div className="image-wrapper image-wrapper-fit">
+					<img src={activeImage} alt={alt ? alt : 'hero'} title={alt ? alt : 'hero'} loading="lazy" />
+				</div>
 			</div>
 
 			<div className="carousel-thumbnails flex-wrap flex-align-items-center flex-justify-content-center">
 				{images.map((image, index) => (
 					<div className={`carousel-thumbnail${activeImage === image ? ' active' : ''}`} key={image}>
 						<a className="pointer" onClick={(e) => handleClick(e, index)}>
-							<img src={image} alt={alt ? alt : 'thumbnail'} title={alt ? alt : 'thumbnail'} />
+							<div className="image-wrapper image-wrapper-fit">
+								<img src={image} alt={alt ? alt : 'thumbnail'} title={alt ? alt : 'thumbnail'} loading="lazy" />
+							</div>
 						</a>
 					</div>
 				))}
