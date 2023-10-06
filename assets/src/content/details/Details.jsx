@@ -16,9 +16,12 @@ export const Details = () => {
 	const navigate = useNavigate();
 	const context = useContext(Context);
 	const [adoptedPet, setAdoptedPet] = context.adoptedPet;
+
+	// Use pet parameter id to get details of pet
 	const { id } = useParams();
 	const results = useQuery(['details', id], context.utils.fetch.pet);
 
+	// Add loading pane until loading
 	if (results.isLoading) {
 		return (
 			<div className="loading-pane">
@@ -30,36 +33,41 @@ export const Details = () => {
 	const pet = results.data.pets[0];
 
 	return (
-		<div className="details">
-			<Carousel images={pet.images} />
+		<div className="details styled-bg">
+			<div className="details-images">
+				<Carousel images={pet.images} />
+			</div>
 
-			<div>
-				<h1>{pet.name}</h1>
+			<div className="details-info">
+				<h3>{pet.name}</h3>
 
-				<h2>
+				<p>
 					{pet.animal} - {pet.breed} - {pet.city}, {pet.state}
-					<button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
-					<p>{pet.description}</p>
-					{showModal ? (
-						<Portal>
-							<div>
-								<h1>Would you like to adopt {pet.name}?</h1>
+				</p>
 
-								<div className="buttons">
-									<button
-										onClick={() => {
-											setAdoptedPet(pet);
-											navigate('/');
-										}}
-									>
-										Yes
-									</button>
-									<button onClick={() => setShowModal(false)}>No</button>
-								</div>
+				<p>{pet.description}</p>
+
+				<button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
+
+				{showModal ? (
+					<Portal>
+						<div>
+							<h3>Would you like to adopt {pet.name}?</h3>
+
+							<div className="buttons">
+								<button
+									onClick={() => {
+										setAdoptedPet(pet);
+										navigate('/');
+									}}
+								>
+									Yes
+								</button>
+								<button onClick={() => setShowModal(false)}>No</button>
 							</div>
-						</Portal>
-					) : null}
-				</h2>
+						</div>
+					</Portal>
+				) : null}
 			</div>
 		</div>
 	);

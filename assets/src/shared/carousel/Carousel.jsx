@@ -1,42 +1,39 @@
 /* React */
-import { Component } from 'react';
+import { useState, useContext } from 'react';
 
-export class Carousel extends Component {
-	state = {
-		active: 0,
+/* Local styles */
+import './styles/carousel.scss';
+
+/* Local components */
+import { Context } from '../../entry/context/Context';
+
+export const Carousel = (props) => {
+	const { images } = props;
+	const context = useContext(Context);
+	let [activeImage, setActiveImage] = useState(images && images[0] ? images[0] : context.variables.images.default);
+
+	// Handle click to update image carousel
+	const handleClick = (e, index) => {
+		e.preventDefault();
+		activeImage = images[index];
+		setActiveImage(activeImage);
 	};
 
-	static defaultProps = {
-		images: ['http://pets-images.dev-apis.com/pets/none.jpg'],
-	};
-
-	handleIndexClick = (e) => {
-		this.setState({
-			active: +e.target.dataset.index,
-		});
-	};
-
-	render() {
-		const { active } = this.state;
-		const { images } = this.props;
-
-		return (
-			<div className="carousel">
-				<img src={images[active]} alt="animal hero" />
-
-				<div className="carousel-smaller">
-					{images.map((image, index) => (
-						<img
-							onClick={this.handleIndexClick}
-							data-index={index}
-							key={image}
-							src={image}
-							className={index === active ? 'active' : ''}
-							alt="animal thumbnail"
-						/>
-					))}
-				</div>
+	return (
+		<div className="carousel flex-wrap flex-align-items-center">
+			<div className="carousel-image">
+				<img src={activeImage} alt="animal hero" title="animal hero" />
 			</div>
-		);
-	}
-}
+
+			<div className="carousel-thumbnails flex-wrap flex-align-items-center flex-justify-content-center">
+				{images.map((image, index) => (
+					<div className={`carousel-thumbnail${activeImage === image ? ' active' : ''}`} key={image}>
+						<a className="pointer" onClick={(e) => handleClick(e, index)}>
+							<img src={image} alt="animal thumbnail" title="animal thumbnail" />
+						</a>
+					</div>
+				))}
+			</div>
+		</div>
+	);
+};

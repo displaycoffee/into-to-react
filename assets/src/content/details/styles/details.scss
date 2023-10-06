@@ -3,9 +3,26 @@
 @use '../../../_config/styles/utils/_mixins';
 @use '../../../_config/styles/theme/_theme';
 
-//// PAGE ONE
+//// DETAILS
 //// --------------------------------------------------------------------------
 
 	// Style block
 
-	.page-page-one {}
+	.details {
+		.details-info {
+			text-align: center;
+			button {
+				margin: 0 auto;
+			}
+		}
+	}
+	@include mixins.respond-min(theme.$bp-03) {
+		.details {
+			.details-info {
+				text-align: left;
+				button {
+					margin: 0;
+				}
+			}
+		}
+	}	
