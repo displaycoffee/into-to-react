@@ -1,0 +1,62 @@
+// Use utils and theme variables
+@use '../../../_config/styles/utils/_functions';
+@use '../../../_config/styles/utils/_mixins';
+@use '../../../_config/styles/theme/_theme';
+
+//// CAROUSEL
+//// --------------------------------------------------------------------------
+
+	// Style block
+
+	.carousel {
+		&, .carousel-image {
+			margin: 0 0 theme.$spacing-x4 0;
+		}
+		.carousel-image, .carousel-thumbnails {
+			min-width: 1px;
+			@include mixins.flex(1 1 100%);
+		}
+		.carousel-image {
+			.image-wrapper {
+				padding-bottom: 75%;
+				img {
+					@include mixins.border-radius(6px);	
+				}
+			}
+		}
+		.carousel-thumbnails {
+			margin: 0 -#{theme.$spacing-x1};
+			.carousel-thumbnail {
+				width: calc(100% / 6);
+				padding: 0 theme.$spacing-x1;
+				&.active a {
+					border-color: darken(theme.$color-05, 5%);
+				}
+				a {
+					display: block;
+					overflow: hidden;					
+					@include mixins.border-radius(50%);
+					border: 2px solid theme.$color-04;
+				}
+			}
+		}
+	}
+	@include mixins.respond-min(theme.$bp-03) {
+		.carousel {
+			.carousel-image {
+				@include mixins.flex(0 1 auto);
+				width: 300px;
+				margin: 0 theme.$spacing-x4 0 0;
+				.image-wrapper {
+					padding-bottom: 100%;
+				}
+			}
+			.carousel-thumbnails {
+				@include mixins.flex;
+				@include mixins.flex-parent(justify-content, flex-start);
+				.carousel-thumbnail {
+					width: calc(100% / 5);
+				}
+			}
+		}
+	}

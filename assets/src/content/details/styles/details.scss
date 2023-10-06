@@ -1,0 +1,28 @@
+// Use utils and theme variables
+@use '../../../_config/styles/utils/_functions';
+@use '../../../_config/styles/utils/_mixins';
+@use '../../../_config/styles/theme/_theme';
+
+//// DETAILS
+//// --------------------------------------------------------------------------
+
+	// Style block
+
+	.details {
+		.details-info {
+			text-align: center;
+			button {
+				margin: 0 auto;
+			}
+		}
+	}
+	@include mixins.respond-min(theme.$bp-03) {
+		.details {
+			.details-info {
+				text-align: left;
+				button {
+					margin: 0;
+				}
+			}
+		}
+	}	

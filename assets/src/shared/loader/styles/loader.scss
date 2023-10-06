@@ -1,0 +1,24 @@
+// Use utils and theme variables
+@use '../../../_config/styles/utils/_functions';
+@use '../../../_config/styles/utils/_mixins';
+@use '../../../_config/styles/theme/_theme';
+
+//// LOADER
+//// --------------------------------------------------------------------------
+
+	// Style block
+
+	.loading-pane {
+		.loader {
+			text-align: center;
+			.icon-wrapper {
+				@include mixins.icon-sizing(100px);
+				@include mixins.animate(spin 1.5s linear infinite);
+				svg {
+					fill: theme.$color-05;
+				}
+			}
+		}
+	}
+
+	@include mixins.animate-spin;

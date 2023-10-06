@@ -1,5 +1,7 @@
-# Node_modules
-node_modules
-
-# Husky
+.DS_Store
+.env
 .husky
+.vscode/
+coverage/
+node_modules/
+assets/dist/*

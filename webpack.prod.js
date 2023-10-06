@@ -3,7 +3,7 @@ const webpCommonConfig = require('./webpack.common.js');
 
 // Prod config
 const webpProdConfig = {
-	mode: 'production'
+	mode: 'production',
 };
 
 module.exports = merge(webpCommonConfig, webpProdConfig);

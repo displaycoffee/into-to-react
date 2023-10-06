@@ -18,7 +18,7 @@ webpCommonConfig.plugins.push(
 			baseDir: webpCommonConfig.output.path,
 			middleware: [historyApiFallback()],
 		},
-	})
+	}),
 );
 
 module.exports = merge(webpCommonConfig, webpDevConfig);

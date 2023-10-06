@@ -1,4 +1,5 @@
 const path = require('path');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // Path config
@@ -6,16 +7,12 @@ const themePath = './assets/';
 const webpPathConfig = {
 	path: path.resolve(__dirname),
 	src: {
-		js: themePath + 'src/js/bundle.js',
-		css: themePath + 'src/scss/styles.scss',
-		fonts: themePath + 'src/fonts/[name][ext]',
-		images: themePath + 'src/images/[name][ext]',
+		js: themePath + 'src/bundle.js',
+		css: themePath + 'src/entry/index/styles/index.scss',
 	},
 	dist: {
 		js: themePath + 'dist/js/bundle.js',
 		css: themePath + 'dist/css/styles.css',
-		fonts: themePath + 'dist/fonts/[name][ext]',
-		images: themePath + 'dist/images/[name][ext]',
 	},
 };
 
@@ -31,11 +28,15 @@ const webpCommonConfig = {
 			filename: webpPathConfig.dist.css,
 		}),
 	],
+	optimization: {
+		minimizer: ['...', new CssMinimizerPlugin()],
+		minimize: true,
+	},
 	module: {
 		rules: [
-			{ 
-				test: /\.txt$/, 
-				use: 'raw-loader' 
+			{
+				test: /\.txt$/,
+				use: 'raw-loader',
 			},
 			{
 				test: /\.(js|jsx)$/,
@@ -55,23 +56,14 @@ const webpCommonConfig = {
 							url: false,
 						},
 					},
-					'sass-loader',
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
 				],
 			},
-			{
-				test: /\.(woff(2)?|ttf)$/,
-				type: 'asset/resource',
-				generator: {
-					filename: webpPathConfig.dist.fonts,
-				},
-			},
-			{
-				test: /\.(png|jpe?g|gif|svg|webmanifest)$/i,
-				type: 'asset/resource',
-				generator: {
-					filename: webpPathConfig.dist.images,
-				},
-			}
 		],
 	},
 	resolve: {

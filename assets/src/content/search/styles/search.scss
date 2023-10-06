@@ -1,0 +1,33 @@
+// Use utils and theme variables
+@use '../../../_config/styles/utils/_functions';
+@use '../../../_config/styles/utils/_mixins';
+@use '../../../_config/styles/theme/_theme';
+
+//// SEARCH
+//// --------------------------------------------------------------------------
+
+	// Style block
+
+	.search {
+		.pet {
+			display: block;			
+			margin: 0 0 theme.$spacing-x4 0;
+			.pet-details {
+				.pet-image {
+					@include mixins.flex(0 1 auto);
+					width: 100px;
+					margin: 0 theme.$spacing-x4 0 0;
+					@include mixins.border-radius(50%);
+					overflow: hidden;
+				}
+				.pet-info {
+					h5 {
+						margin: 0 0 theme.$spacing-x1 0;
+					}
+					p {
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
