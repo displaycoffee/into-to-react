@@ -1,16 +1,8 @@
-# Intro to React
+﻿# Base (version 4.0)
 
-Course via Frontend Masters by [Brian Holt](https://github.com/btholt). Links to course resources:
+Base template/framework to create projects. Primarily built with React, JavaScript, Sass, and Vite. Contains:
 
--   [Course website](https://react-v8.holt.courses)
--   [Course website repo](https://github.com/btholt/complete-intro-to-react-v8)
--   [Example projects repo](https://github.com/btholt/citr-v8-project/tree/main)
-
-For the most part, a lot of the work here carries the same concepts as in the lessons, but I did change a few things:
-
--   Refactored and restructure code (based on my [own template](https://github.com/displaycoffee/base))
--   Rewrote styles because I like Sass :)
--   Made most components functional (except `ErrorBoundary`)
--   Kept the search params on the left side when on details page
--   Made reusable `Loader` component
--   Likely other stuff I'm forgetting
+-   `src/app/_config` directory to configure up "global" settings
+-   Organized other directories into folders within `src/app` as: `content`, `entry`, `shared`, `sidebar`
+-   `entry` directory contains components for additional functionality when needed, like portals and context
+-   JS is bundled using `npm run build`
