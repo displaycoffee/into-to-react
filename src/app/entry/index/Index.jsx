@@ -1,6 +1,6 @@
 /* React */
 import { useEffect, useState, useContext } from 'react';
-import { BrowserRouter as Router, Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 /* Local styles */
@@ -53,27 +53,25 @@ export const IndexWrapper = () => {
 
 	return (
 		<div className="wrapper">
-			<Router basename={context.variables.paths.base}>
-				<IndexBody />
+			<IndexBody />
 
-				<ErrorBoundary message={<IndexError />}>
-					<Header />
+			<ErrorBoundary message={<IndexError />}>
+				<Header />
 
-					<main className="main">
-						<div className="main-layout flex-wrap">
-							<aside className="main-sidebar">
-								<AdoptedPet />
+				<main className="main">
+					<div className="main-layout flex-wrap">
+						<aside className="main-sidebar">
+							<AdoptedPet />
 
-								<SearchParams setRequestParams={setRequestParams} animal={animal} setAnimal={setAnimal} breeds={breeds} />
-							</aside>
+							<SearchParams setRequestParams={setRequestParams} animal={animal} setAnimal={setAnimal} breeds={breeds} />
+						</aside>
 
-							<section className="main-content">
-								<NavigationRoutes requestParams={requestParams} />
-							</section>
-						</div>
-					</main>
-				</ErrorBoundary>
-			</Router>
+						<section className="main-content">
+							<NavigationRoutes requestParams={requestParams} />
+						</section>
+					</div>
+				</main>
+			</ErrorBoundary>
 		</div>
 	);
 };

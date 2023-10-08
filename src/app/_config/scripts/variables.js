@@ -1,7 +1,7 @@
 /* This config contains variables to use through application */
 export const variables = {
 	paths: {
-		base: window.location.pathname.includes('/base') ? '/base' : '',
+		base: window.location.pathname.includes('/into-to-react') ? '/into-to-react' : '',
 		api: 'http://pets-v2.dev-apis.com',
 	},
 	images: {
