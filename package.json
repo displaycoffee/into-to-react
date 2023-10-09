@@ -7,8 +7,8 @@
 	"scripts": {
 		"build": "vite build",
 		"dev": "vite --host",
-		"format": "prettier --write \"assets/src/**/*.{js,jsx,ts,tsx}\"",
-		"lint": "eslint \"./assets/src/**/*.{js,jsx,ts,tsx}\" --quiet",
+		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+		"lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
 		"preview": "vite preview"
 	},
 	"keywords": [],
