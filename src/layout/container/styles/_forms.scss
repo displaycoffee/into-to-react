@@ -1,0 +1,50 @@
+// Use utils and theme variables
+@use '../../../_config/styles/utils/_functions';
+@use '../../../_config/styles/utils/_mixins';
+@use '../../../_config/styles/theme/_theme';
+
+//// FORMS
+//// --------------------------------------------------------------------------
+
+	// Style block
+
+	input[type='text'], select, button:not(.unstyled) {
+		font-size: functions.em(14px, 'rem');
+		height: 36px;
+		line-height: 36px;
+		@include mixins.border-radius(6px);
+	}
+	input[type='text'], select {
+		border: theme.$color-09 1px solid;
+		background-color: theme.$color-08;
+	}
+	button:not(.unstyled) {
+		display: block;
+		cursor: pointer;
+		background-color: theme.$color-05;
+		@include mixins.transition(background-color 0.3s ease-in-out);
+		border: 0;
+		padding: 0 theme.$spacing-x4;
+		font-weight: theme.$font-weight-01;
+		color: theme.$color-08;
+		@include mixins.ellipsis;
+		&:hover, &:active {
+			background-color: theme.$color-06;
+		}
+	}
+	button.unstyled {
+		padding: 0;
+		background-color: transparent;
+		border: 0;
+		line-height: 1.5;
+	}
+	.flex-label {
+		span {
+			@include mixins.flex(0 1 auto);
+			width: 80px;
+			padding: 0 theme.$spacing-x2 0 0;
+		}
+		input[type='text'], select {
+			@include mixins.flex;
+		}
+	}

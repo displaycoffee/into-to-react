@@ -1,15 +1,18 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default defineConfig({
-	plugins: [react()],
+	root: 'src',
+	publicDir: '../public',
+	plugins: [react(), basicSsl()],
 	server: {
 		host: 'localhost',
 		port: 3000,
 	},
-	root: 'src',
 	build: {
 		outDir: '../dist',
+		emptyOutDir: true,
 		rollupOptions: {
 			output: {
 				assetFileNames: (file) => {
@@ -21,9 +24,9 @@ export default defineConfig({
 					}
 				},
 				chunkFileNames: (file) => {
-					return `assets/js/app.${file.name.toLowerCase()}.js`;
+					return `assets/js/bundle.${file.name.toLowerCase()}.js`;
 				},
-				entryFileNames: 'assets/js/app.js',
+				entryFileNames: 'assets/js/bundle.js',
 			},
 		},
 	},

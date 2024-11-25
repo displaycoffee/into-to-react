@@ -1,0 +1,21 @@
+// Use utils and theme variables
+@use '../../../_config/styles/utils/_functions';
+@use '../../../_config/styles/utils/_mixins';
+@use '../../../_config/styles/theme/_theme';
+
+//// HEADER
+//// --------------------------------------------------------------------------
+
+	// Style block
+
+	.header {
+		text-align: center;
+		h1 {
+			display: inline-block;
+			line-height: 0;
+			a {
+				display: block;
+				filter: brightness(150%);
+			}
+		}
+	}
